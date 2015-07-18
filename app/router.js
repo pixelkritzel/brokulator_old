@@ -6,6 +6,10 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('transactions', function() {
+    this.route('new');
+    this.route('edit', { path: "/edit/:transaction_id" });
+  });
 });
 
 export default Router;

@@ -1,0 +1,9 @@
+{{outlet}}
+
+
+{{input value=model.name required="required"}}
+{{input value=model.amount}}
+{{input value=inputCompatibleDueDate type="date"}}
+
+<button type="button" {{action 'deleteTransaction'}}>Delete Transaction</button>
+<button type="button" {{action 'saveTransaction'}}>Save Changes</button>
