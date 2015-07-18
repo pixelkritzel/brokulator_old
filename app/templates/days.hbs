@@ -1,0 +1,15 @@
+{{outlet}}
+
+Number of Days:
+{{input value=numberOfDays type="number"}}
+
+<ul>
+{{#each day in days}}
+  <li>
+    {{day.date}}
+    {{#each transaction in day.transactions}}
+      {{transaction.name}}
+    {{/each}}
+  </li>
+{{/each}}
+</ul>

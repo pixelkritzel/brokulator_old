@@ -10,6 +10,7 @@ Router.map(function() {
     this.route('new');
     this.route('edit', { path: "/edit/:transaction_id" });
   });
+  this.route('days');
 });
 
 export default Router;
