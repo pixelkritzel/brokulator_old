@@ -4,11 +4,26 @@
 <ul>
 {{#each account in model}}
   <li>
-    <ul>
-      <li><strong>Name:</strong> {{account.name}}</li>
-      <li><strong>Balance:</strong> {{account.balance}}</li>
-      <button class="btn btn-link" type="button" {{action "deleteAccount" account}}> <span class="glyphicon glyphicon-remove"></span> Delete account</button>
-    </ul>
+    <dl>
+      <dt>
+        Account-Name:
+      </dt>
+      <dd>
+        {{#editable-text type="text" model=account property="name"}}
+        {{account.name}}
+        {{/editable-text}}
+      </dd>
+
+      <dt>
+        Balance:
+      </dt>
+      <dd>
+        {{#editable-text type="number" model=account property="balance"}}
+        {{account.balance}}
+        {{/editable-text}}
+      </dd>
+    </dl>
+    <button class="btn btn-link" type="button" {{action "deleteAccount" account}}> <span class="glyphicon glyphicon-remove"></span> Delete account</button>
   </li>
 {{/each}}
 </ul>
@@ -17,6 +32,6 @@
 
 <form>
   {{validated-input type="text" value=newAccountName errors=errors.newAccountName placeholder="New Account Name"}}
-  {{input value=newAccountBalance placeholder="New Account Balance"  autofocus="autofocus"}}
+  {{input value=newAccountBalance placeholder="New Account Balance"}}
   <button type="submit" {{action "addNewAccount"}}>Save new account</button>
 </form>

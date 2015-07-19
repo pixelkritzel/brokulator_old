@@ -1,1 +1,15 @@
+{{#unless isEditing}}
 {{yield}}
+<button class="btn btn-link" type="button" {{action "startEditing"}}><span class="glyphicon glyphicon-pencil"></span></button>
+{{else}}
+<form class="form-inline inline-block">
+  {{input type="type" value=propertyToEdit autofocus="autofocus" class="form-control"}}
+  <button class="btn btn-link"
+          type="submit"
+          {{action "saveEdits"}}>
+    <span class="glyphicon glyphicon-ok"></span>
+  </button>
+  <button class="btn btn-link" type="button" {{action "cancelEditing"}}><span class="glyphicon glyphicon-remove"></span></button>
+  {{errorMessage}}
+</form>
+{{/unless}}
