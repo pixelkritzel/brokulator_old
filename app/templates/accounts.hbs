@@ -1,9 +1,7 @@
 {{outlet}}
-
-
-<ul>
+<ul class="row list-unstyled">
 {{#each account in model}}
-  <li>
+  <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3 account">
     <dl>
       <dt>
         Account-Name:
@@ -23,15 +21,21 @@
         {{/editable-text}}
       </dd>
     </dl>
-    <button class="btn btn-link" type="button" {{action "deleteAccount" account}}> <span class="glyphicon glyphicon-remove"></span> Delete account</button>
+    <button class="btn btn-link account-delete" type="button" title="Delete account" {{action "deleteAccount" account}}> <span class="glyphicon glyphicon-remove"></span></button>
   </li>
 {{/each}}
 </ul>
 
 <h2>Add new account</h2>
 
-<form>
-  {{validated-input type="text" value=newAccountName errors=errors.newAccountName placeholder="New Account Name"}}
-  {{input value=newAccountBalance placeholder="New Account Balance"}}
-  <button type="submit" {{action "addNewAccount"}}>Save new account</button>
+<form class="form-inline">
+  <div class="form-group">
+    <label for="newAccountName">Name</label>
+    {{input class="form-control" id="newAccountName" type="text" value=newAccountName placeholder="New Account Name"}}
+  </div>
+  <div class="form-group">
+    <label for="newAccountBalance">Balance</label>
+    {{input  class="form-control" id="newAccountBalance" type="number" value=newAccountBalance placeholder="New Account Balance"}}
+    <button class="btn btn-primary" type="submit" {{action "addNewAccount"}}>Save new account</button>
+  </div>
 </form>

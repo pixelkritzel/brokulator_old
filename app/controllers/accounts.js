@@ -8,8 +8,8 @@ export default Ember.Controller.extend(EmberValidations, {
     },
 
     addNewAccount: function() {
-      var name = this.get('newAccountName');
-      var balance = this.get('newAccountBalance');
+      var name = this.get('newAccountName') || "Your Account Name";
+      var balance = this.get('newAccountBalance') || 0;
       var newAccount = this.store.createRecord('account', {
         name,
         balance
