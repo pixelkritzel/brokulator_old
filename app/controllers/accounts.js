@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
   actions: {
     deleteAccount: function(account) {
       account.destroyRecord();
@@ -15,6 +16,11 @@ export default Ember.Controller.extend({
       });
       newAccount.save();
     }
+  },
 
+  validations: {
+    newAccountName: {
+      presence: true
+    }
   }
 });

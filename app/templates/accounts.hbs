@@ -16,7 +16,7 @@
 <h2>Add new account</h2>
 
 <form>
-  {{input value=newAccountName placeholder="New Account Name" autofocus="autofocus"}}
+  {{validated-input type="text" value=newAccountName errors=errors.newAccountName placeholder="New Account Name"}}
   {{input value=newAccountBalance placeholder="New Account Balance"  autofocus="autofocus"}}
   <button type="submit" {{action "addNewAccount"}}>Save new account</button>
 </form>
