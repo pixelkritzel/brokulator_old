@@ -7,7 +7,7 @@
     <ul>
       <li><strong>Name:</strong> {{account.name}}</li>
       <li><strong>Balance:</strong> {{account.balance}}</li>
-      <button type="button" {{action "deleteAccount" account}}>Delete account</button>
+      <button class="btn btn-link" type="button" {{action "deleteAccount" account}}> <span class="glyphicon glyphicon-remove"></span> Delete account</button>
     </ul>
   </li>
 {{/each}}
