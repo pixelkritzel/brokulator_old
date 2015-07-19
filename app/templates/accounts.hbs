@@ -1,0 +1,22 @@
+{{outlet}}
+
+
+<ul>
+{{#each account in model}}
+  <li>
+    <ul>
+      <li><strong>Name:</strong> {{account.name}}</li>
+      <li><strong>Balance:</strong> {{account.balance}}</li>
+      <button type="button" {{action "deleteAccount" account}}>Delete account</button>
+    </ul>
+  </li>
+{{/each}}
+</ul>
+
+<h2>Add new account</h2>
+
+<form>
+  {{input value=newAccountName placeholder="New Account Name" autofocus="autofocus"}}
+  {{input value=newAccountBalance placeholder="New Account Balance"  autofocus="autofocus"}}
+  <button type="submit" {{action "addNewAccount"}}>Save new account</button>
+</form>

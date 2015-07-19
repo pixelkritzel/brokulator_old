@@ -11,6 +11,7 @@ Router.map(function() {
     this.route('edit', { path: "/edit/:transaction_id" });
   });
   this.route('days');
+  this.route('accounts');
 });
 
 export default Router;
