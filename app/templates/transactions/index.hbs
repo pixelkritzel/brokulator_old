@@ -9,6 +9,8 @@
         <dd>{{transaction.amount}}</dd>
         <dt>Due Date:</dt>
         <dd>{{transaction.dueDate}}</dd>
+        <dt>Account</dt>
+        <dd>{{transaction.account.name}}</dd>
       </dl>
       {{#link-to 'transactions.edit' transaction}}Edit{{/link-to}}
     </li>

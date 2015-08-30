@@ -4,22 +4,35 @@ export default Ember.Controller.extend({
   actions: {
     saveTransaction: function() {
       this.model.save();
-      this.transitionTo('transactions');
+      this.transitionToRoute('transactions');
     },
 
     deleteTransaction: function() {
       this.model.destroyRecord();
-      this.transitionTo('transactions');
+      this.transitionToRoute('transactions');
+    },
+
+    setAccount: function(selection, component) {
+      this.model.set('account', selection);
     }
   },
 
-  inputCompatibleDueDate: function(key, value) {
-    if (arguments.length > 1) {
+  accounts: Ember.computed('accounts', {
+    get: function() {
+      return this.store.findAll('account')
+    }
+  }),
+
+  inputCompatibleDueDate: Ember.computed('dueDate', {
+    get: function() {
+      return this.model.get('dueDate').toISOString().slice(0, 10);
+    },
+    set: function(key, value) {
       var dueDate = new Date(value);
       if (dueDate.toString() !== "Invalid Date") {
         this.model.set('dueDate', dueDate);
       }
+      return this.model.get('dueDate').toISOString().slice(0, 10);
     }
-    return this.model.get('dueDate').toISOString().slice(0, 10);
-  }.property('dueDate')
+  })
 });

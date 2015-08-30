@@ -5,5 +5,12 @@
 {{input value=model.amount}}
 {{input value=inputCompatibleDueDate type="date"}}
 
+
+{{#x-select value=model.account action="setAccount"}}
+  {{#each accounts as |account|}}
+  {{#x-option value=account}} {{account.name}} {{/x-option}}
+  {{/each}}
+{{/x-select}}
+
 <button type="button" {{action 'deleteTransaction'}}>Delete Transaction</button>
 <button type="button" {{action 'saveTransaction'}}>Save Changes</button>
