@@ -1,6 +1,6 @@
 {{#link-to 'transactions.new'}}Create new transaction{{/link-to}}
 <ul>
-  {{#each transaction in model}}
+  {{#each model as |transaction| }}
     <li>
       <dl>
         <dt>Name:</dt>
