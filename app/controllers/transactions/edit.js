@@ -8,12 +8,16 @@ export default Ember.Controller.extend({
     },
 
     deleteTransaction: function() {
-      this.model.destroyRecord();
+      this.model.deleteRecord();
+      this.model.save();
       this.transitionToRoute('transactions');
     },
 
     setAccount: function(selection, component) {
       this.model.set('account', selection);
+      selection.get('transactions').pushObject(this.model);
+      this.model.save();
+      this.model.get('account').save();
     }
   },
 
@@ -25,14 +29,15 @@ export default Ember.Controller.extend({
 
   inputCompatibleDueDate: Ember.computed('dueDate', {
     get: function() {
-      return this.model.get('dueDate').toISOString().slice(0, 10);
+      console.log('this.get dueDate', this.model.get('dueDate'));
+      return this.model.get('dueDate').slice(0, 10);
     },
     set: function(key, value) {
       var dueDate = new Date(value);
       if (dueDate.toString() !== "Invalid Date") {
         this.model.set('dueDate', dueDate);
       }
-      return this.model.get('dueDate').toISOString().slice(0, 10);
+      return this.model.get('dueDate').slice(0, 10);
     }
   })
 });

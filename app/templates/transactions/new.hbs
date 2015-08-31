@@ -1,3 +1,10 @@
 {{outlet}}
-{{partial "transactions/_form"}}
-<button type="button" {{action "newTransaction"}}>Save Transaction</button>
+{{input value=name required="required"}}
+{{input value=amount}}
+{{input value=dueDate type="date"}}
+{{#x-select value=account action="setAccount"}}
+  {{#each accounts as |account|}}
+  {{#x-option value=account}} {{account.name}} {{/x-option}}
+  {{/each}}
+{{/x-select}}
+<button type="submit" {{action "newTransaction"}}>Save Transaction</button>
